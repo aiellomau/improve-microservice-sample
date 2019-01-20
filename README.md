@@ -1,4 +1,4 @@
-Upgrade Microservice Sample
+Microservice Sample - Island Reservations
 ==============
 
 It uses three microservices:
@@ -22,32 +22,28 @@ Even Though that we have just only campsite on the island, I assumed that this c
 
 Also I assume that a user can reserve eventhough has already done it before. So a user can have more than one reservation.
 
-Technical Decitions:
+Technical Staff:
 ------------
 
-I user hsqldb as datastore for now.
+At the moment I use hsqldb as datastore. In future I'will move to nosql o a relational one. I did not decide it yet
+
 
 How To Run
 ----------
-
-The demo can be run with [Docker Machine and Docker
-Compose](docker/README.md).
-
-[How to run](HOW-TO-RUN.md) includes more details.
+Each Microservice has it own script names standalone.sh
+./standalone.sh
 
 
-Remarks on the Code
+Microservices Projects
 -------------------
 
 The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
-- microservice-demo-eureka is the Eureka server for service discovery.
-- microservice-demo-zuul is the Zuul server. It distributes the requests to the three microservices.
+- eureka-server: is the Eureka server for service discovery.
+- zuul-server: is the Zuul server. It distributes the requests to the three microservices.
 
 The microservices are: 
-- microservice-demo-catalog is the application to take care of items.
-- microserivce-demo-customer is responsible for customers.
-- microservice-demo-order does order processing. It uses microservice-demo-catalog and microservice-demo-customer. Ribbon is used for load balancing and Hystrix for resilience.
+- campsite: is the application to take care of items.
+- user: is responsible for customers.
+- reservation: does reservation processing. It uses campsite and user microservices.
 
-
-The microservices have an Java main application in src/test/java to run them stand alone. microservice-demo-order uses a stub for the other services then. Also there are tests that use customer driven contracts. That is why it is ensured that the services provide the correct interface. These CDC tests are used in microservice-demo-order to verify the stubs. In microserivce-demo-customer and microserivce-demo-catalog they are used to verify the implemented REST services.
