@@ -27,12 +27,29 @@ Technical Staff:
 
 At the moment I use hsqldb as datastore. In future I'will move to nosql o a relational one. I did not decide it yet
 
-
 How To Run
 ----------
 Each Microservice has it own script names standalone.sh
 ./standalone.sh
 
+cd eureka-server
+sh standalone.sh
+cd ..
+cd zuul-server
+sh standalone.sh
+cd ..
+cd user-ms
+sh standalone.sh
+cd ..
+cd campsite-ms
+sh standalone.sh
+cd ..
+cd registration-ms
+sh standalone.sh
+cd ..
+
+
+If all is going well try to ping Eureka server -> http://localhost:8761/
 
 Microservices Projects
 -------------------
