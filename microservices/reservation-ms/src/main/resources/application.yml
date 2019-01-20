@@ -1,0 +1,27 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: reservation
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+
+validation:
+  reservation:
+    max:
+      days:
+        exceeded:
+          msg: Reservation max. days exceeded
+    availability:
+      msg: Dates already take it
+    anticipate:
+      days:
+        error:
+          msg: Not allowed reservation dates
