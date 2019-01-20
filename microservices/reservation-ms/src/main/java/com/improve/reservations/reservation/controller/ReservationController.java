@@ -18,6 +18,7 @@ import com.improve.reservations.reservation.controller.data.ReservationInfo;
 import com.improve.reservations.reservation.exception.AnticipateDaysOutException;
 import com.improve.reservations.reservation.exception.MaxDaysExcedeedException;
 import com.improve.reservations.reservation.exception.ReservationBadRequestException;
+import com.improve.reservations.reservation.exception.ReservationDaysException;
 import com.improve.reservations.reservation.exception.UnAvailabilityException;
 import com.improve.reservations.reservation.model.Reservation;
 import com.improve.reservations.reservation.service.ReservationService;
@@ -66,7 +67,8 @@ public class ReservationController implements IReservationController {
 
 		try {
 			return reservationService.save(reservation);
-		} catch (AnticipateDaysOutException | MaxDaysExcedeedException | ReservationBadRequestException mrEx) {
+		} catch (ReservationDaysException | AnticipateDaysOutException | MaxDaysExcedeedException
+				| ReservationBadRequestException mrEx) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, mrEx.getLocalizedMessage(), mrEx);
 		} catch (final UnAvailabilityException uaEx) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, uaEx.getLocalizedMessage(), uaEx);
@@ -78,7 +80,8 @@ public class ReservationController implements IReservationController {
 
 		try {
 			return reservationService.update(reservation);
-		} catch (AnticipateDaysOutException | MaxDaysExcedeedException | ReservationBadRequestException mrEx) {
+		} catch (ReservationDaysException | AnticipateDaysOutException | MaxDaysExcedeedException
+				| ReservationBadRequestException mrEx) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, mrEx.getLocalizedMessage(), mrEx);
 		} catch (final UnAvailabilityException uaEx) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, uaEx.getLocalizedMessage(), uaEx);
