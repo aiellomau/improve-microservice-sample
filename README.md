@@ -19,12 +19,12 @@ Technologies
 Assumptions:
 ------------
 Although we only have one place to camp on the island, I assumed that this could change in the future. Bearing in mind that in the near future you will probably have more than one campsite. Therefore, the solution will be more flexible to avoid future changes.
-Also I assume that a user can reserve eventhough has already done it before. So a user can have more than one reservation.
+Also I assume that a user can reserve even though has already done it before. So a user can have more than one reservation.
 
 Technical Staff:
 ------------
 
-At the moment I use hsqldb as datastore. In future I'will move to nosql o a relational one. I have not decided yet.
+At the moment I use hsqldb as datastore. In future I will move to a Nosql or a Relational one. I have not decided yet. This depend on each microservice requirements.
 
 How To Run
 ----------
