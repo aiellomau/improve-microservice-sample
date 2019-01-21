@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: reservation
+    resources:
+      add-mappings: false
 
 eureka:
   client:
@@ -25,3 +27,7 @@ validation:
       days:
         error:
           msg: Not allowed reservation dates
+    date:
+      days:
+        error:
+          msg: Arrival date is after Departure date
