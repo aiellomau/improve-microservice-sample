@@ -11,10 +11,16 @@ import com.improve.reservations.reservation.controller.data.CampsiteAvailabiliti
 import com.improve.reservations.reservation.controller.data.ReservationInfo;
 import com.improve.reservations.reservation.model.Reservation;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+@Api(value = "reservation")
 public interface IReservationController {
 
 	/**
-	 * Provide information of the availability of the campsite for a given date
+	 * Provide information of the availability of the campsite for a given dates
 	 * range
 	 * 
 	 * @param from
@@ -22,6 +28,9 @@ public interface IReservationController {
 	 * @return CampsiteAvailabilities instance for the given dates and campsite 1 by
 	 *         default
 	 */
+	@ApiOperation(value = "Provide information of the availability of the campsite for a given dates range")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok"),
+			@ApiResponse(code = 500, message = "Error while parsing dates") })
 	@GetMapping("/avail/{from}/{to}")
 	CampsiteAvailabilities availableDates(String from, final String to);
 
@@ -43,6 +52,9 @@ public interface IReservationController {
 	 * @param reservationId
 	 * @return
 	 */
+	@ApiOperation(value = "Find by Reservation Id")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Ok", response = Reservation.class),
+			@ApiResponse(code = 404, message = "Rservation Id not found") })
 	@GetMapping("/{reservationId}")
 	Reservation findById(Long reservationId);
 

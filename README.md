@@ -18,19 +18,18 @@ Technologies
 
 Assumptions:
 ------------
-Even Though that we have just only campsite on the island, I assumed that this could be changed in future. Having in mind that in near future will probably have more than one campsite, the solution will be more flexible in order to prevent future changes.
+Even Though that we have just only campsite on the island, I assumed that this could be changed in future. Having in mind that in near future will probably have more than one campsite, so the solution will be more flexible in order to prevent future changes.
 
 Also I assume that a user can reserve eventhough has already done it before. So a user can have more than one reservation.
 
 Technical Staff:
 ------------
 
-At the moment I use hsqldb as datastore. In future I'will move to nosql o a relational one. I did not decide it yet
+At the moment I use hsqldb as datastore. In future I'will move to nosql o a relational one. I have not decided yet.
 
 How To Run
 ----------
 Each Microservice has it own script names standalone.sh
-./standalone.sh
 
 cd eureka-server
 sh standalone.sh
@@ -49,7 +48,7 @@ sh standalone.sh
 cd ..
 
 
-If all is going well try to ping Eureka server -> http://localhost:8761/
+Then, if all is ok, try to ping Eureka server -> http://localhost:8761/
 
 Microservices Projects
 -------------------
@@ -63,4 +62,5 @@ The microservices are:
 - campsite: is the application to take care of items.
 - user: is responsible for customers.
 - reservation: does reservation processing. It uses campsite and user microservices.
+
 
