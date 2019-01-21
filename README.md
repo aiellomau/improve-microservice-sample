@@ -18,8 +18,7 @@ Technologies
 
 Assumptions:
 ------------
-Even Though that we have just only campsite on the island, I assumed that this could be changed in future. Having in mind that in near future will probably have more than one campsite, so the solution will be more flexible in order to prevent future changes.
-
+Although we only have one place to camp on the island, I assumed that this could change in the future. Bearing in mind that in the near future you will probably have more than one campsite. Therefore, the solution will be more flexible to avoid future changes.
 Also I assume that a user can reserve eventhough has already done it before. So a user can have more than one reservation.
 
 Technical Staff:
