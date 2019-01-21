@@ -62,4 +62,4 @@ The microservices are:
 - user: is responsible for customers.
 - reservation: does reservation processing. It uses campsite and user microservices.
 
-[![Microservices](https://raw.githubusercontent.com/aiellomau/improve-microservice-sample/master/docs/Reservation%20Island%20-%20Microservices.png)
+![Microservices](https://raw.githubusercontent.com/aiellomau/improve-microservice-sample/master/docs/Reservation%20Island%20-%20Microservices.png)
