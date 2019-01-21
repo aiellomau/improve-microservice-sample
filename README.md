@@ -4,7 +4,7 @@ Microservice Sample - Island Reservations
 It uses three microservices:
 - Reservation to process reservations on campsite.
 - User to handle user data.
-- Campsite to handle campsite data. (By the fault there is only one campsite for reservation)
+- Campsite to handle campsite data. (By the default there is only one campsite for reservation)
 
 Technologies
 ------------
