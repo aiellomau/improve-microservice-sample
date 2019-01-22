@@ -104,10 +104,9 @@ Sample response:
 ### Cancel a reserve
 | Http Method | URL |
 | ------ | ------ |
-| DELETE | ttp://host:port/reservation/cancel/{reservationId} |
+| DELETE | http://host:port/reservation/cancel/{reservationId} |
 
 Sample URL: http://localhost:8762/reservation/cancel/1
-Response Empty. 
-200 if cancelled
-404 if reservation id not found
-404 reservation id Not found.
+Response Empty.
+- 200 if cancelled
+- 404 if reservation id not found
