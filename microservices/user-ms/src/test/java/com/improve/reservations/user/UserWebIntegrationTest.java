@@ -29,14 +29,14 @@ import com.improve.reservations.user.model.User;
 import com.improve.reservations.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = UserApp.class, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = UserApp.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class UserWebIntegrationTest {
 
 	@Autowired
 	private UserService userService;
 
-	@Value("${server.port}")
+	@Value("${local.server.port}")
 	private int serverPort;
 
 	private RestTemplate restTemplate;
