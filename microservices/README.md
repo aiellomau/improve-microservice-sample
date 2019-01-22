@@ -107,6 +107,7 @@ Sample response:
 | DELETE | http://host:port/reservation/cancel/{reservationId} |
 
 Sample URL: http://localhost:8762/reservation/cancel/1
+
 Sample response:
 ```Json
 {
@@ -118,3 +119,4 @@ Sample response:
     "status": "CANCELLED"
 }
 ```
+
