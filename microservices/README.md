@@ -107,6 +107,14 @@ Sample response:
 | DELETE | http://host:port/reservation/cancel/{reservationId} |
 
 Sample URL: http://localhost:8762/reservation/cancel/1
-Response Empty.
-- 200 if cancelled
-- 404 if reservation id not found
+Sample response:
+```Json
+{
+    "reservationId": 1,
+    "userId": 9,
+    "campsiteId": 1,
+    "arrivalDate": "2019-02-01T00:00:00.000+0000",
+    "departureDate": "2019-02-04T00:00:00.000+0000",
+    "status": "CANCELLED"
+}
+```
