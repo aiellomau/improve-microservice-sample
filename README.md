@@ -29,22 +29,31 @@ At the moment I use hsqldb as datastore. In future I will move to a Nosql or a R
 How To Run
 ----------
 Each Microservice has it own script names standalone.sh. Is recomended to hace several terminals to run all services in console.
+```sh
 # Start Discovery
-cd eureka-server
-sh standalone.sh
+$ cd eureka-server
+$ sh standalone.sh
+```
+```sh
 # Api Gateway
-cd zuul-server
-sh standalone.sh
+$ cd zuul-server
+$ sh standalone.sh
+```
+```sh
 # Start User Microservice
-cd user-ms
-sh standalone.sh
+$ cd user-ms
+$ sh standalone.sh
+```
+```sh
 # Start Campsite Microservice
-cd campsite-ms
-sh standalone.sh
+$ cd campsite-ms
+$ sh standalone.sh
+```
+```sh
 # Start Reservation Microservice
-cd registration-ms
-sh standalone.sh
-
+$ cd registration-ms
+$ sh standalone.sh
+```
 
 Then, if all is ok, try to ping Eureka server -> http://localhost:8761/
 
