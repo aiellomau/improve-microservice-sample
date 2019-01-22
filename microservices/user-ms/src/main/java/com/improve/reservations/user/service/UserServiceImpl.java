@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(final Long userId) {
 		return userRepository.findById(userId)
-				.orElseThrow(() -> new ResourceNotFoundException(String.format("User %s not found", userId)));
+				.orElseThrow(() -> new ResourceNotFoundException(String.format("User [%s] not found", userId)));
 
 	}
 

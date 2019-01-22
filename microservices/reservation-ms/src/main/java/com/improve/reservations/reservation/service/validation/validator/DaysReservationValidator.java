@@ -12,7 +12,7 @@ import com.improve.reservations.reservation.exception.ReservationValidationExcep
 public class DaysReservationValidator implements ReservationValidator {
 
 	@Value("${validation.reservation.date.days.error.msg}")
-	private String message;
+	private String errorMessage;
 
 	@Override
 	public void checkConstraint(final ReservationInfo reservation, final Campsite campsite)
@@ -20,12 +20,12 @@ public class DaysReservationValidator implements ReservationValidator {
 
 		if (reservation.getArrivalDate().equals(reservation.getDepartureDate())
 				|| reservation.getArrivalDate().after(reservation.getDepartureDate())) {
-			throw new ReservationDaysException(getMessage());
+			throw new ReservationDaysException(getErrorMessage());
 		}
 	}
 
-	public String getMessage() {
-		return message;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
 }

@@ -19,7 +19,7 @@ import com.improve.reservations.reservation.repository.ReservationRepository;
 public class AvailabilityReservationValidator implements ReservationValidator {
 
 	@Value("${validation.reservation.availability.msg}")
-	private String message;
+	private String errorMessage;
 
 	private ReservationRepository reservationRepository;
 
@@ -35,14 +35,14 @@ public class AvailabilityReservationValidator implements ReservationValidator {
 			final Optional<Reservation> reserv = reserves.stream()
 					.filter(r -> r.getStatus().equals(ReservationStatus.RESERVED)).findAny();
 			if (reserv.isPresent()) {
-				throw new UnAvailabilityException(getMessage());
+				throw new UnAvailabilityException(getErrorMessage());
 			}
 		}
 
 	}
 
-	public String getMessage() {
-		return message;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
 	@Autowired

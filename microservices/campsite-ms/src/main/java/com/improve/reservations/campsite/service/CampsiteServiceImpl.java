@@ -27,7 +27,7 @@ public class CampsiteServiceImpl implements CampsiteService {
 	public Campsite findById(final Long campsiteId) {
 
 		return campsiteRepository.findById(campsiteId)
-				.orElseThrow(() -> new ResourceNotFoundException(String.format("Campsite %s not found", campsiteId)));
+				.orElseThrow(() -> new ResourceNotFoundException(String.format("Campsite [%s] not found", campsiteId)));
 	}
 
 	@Autowired

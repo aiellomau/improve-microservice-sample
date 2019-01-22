@@ -7,6 +7,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,7 +64,7 @@ public class ReservationController implements IReservationController {
 	}
 
 	@Override
-	public Reservation save(@RequestBody final ReservationInfo reservation) {
+	public Reservation add(@RequestBody final ReservationInfo reservation) {
 
 		try {
 			return reservationService.save(reservation);
@@ -89,11 +90,11 @@ public class ReservationController implements IReservationController {
 	}
 
 	@Override
-	public void cancel(@PathVariable final Long reservationId) {
+	public Reservation cancel(@PathVariable final Long reservationId) {
 		try {
-			reservationService.cancel(reservationId);
-		} catch (final ReservationBadRequestException mrEx) {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, mrEx.getLocalizedMessage(), mrEx);
+			return reservationService.cancel(reservationId);
+		} catch (final ResourceNotFoundException ex) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getLocalizedMessage(), ex);
 		}
 	}
 

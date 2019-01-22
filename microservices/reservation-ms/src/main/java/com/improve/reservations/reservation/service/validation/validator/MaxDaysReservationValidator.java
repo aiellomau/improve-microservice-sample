@@ -17,7 +17,7 @@ import com.improve.reservations.reservation.service.util.DateUtils;
 public class MaxDaysReservationValidator implements ReservationValidator {
 
 	@Value("${validation.reservation.max.days.exceeded.msg}")
-	private String message;
+	private String errorMessage;
 
 	@Override
 	public void checkConstraint(final ReservationInfo reservation, final Campsite campsite)
@@ -25,7 +25,7 @@ public class MaxDaysReservationValidator implements ReservationValidator {
 
 		if (daysDiff(reservation.getArrivalDate(), reservation.getDepartureDate()) > campsite
 				.getMaxReservedDaysAllowed()) {
-			throw new MaxDaysExcedeedException(getMessage());
+			throw new MaxDaysExcedeedException(getErrorMessage());
 		}
 	}
 
@@ -37,8 +37,8 @@ public class MaxDaysReservationValidator implements ReservationValidator {
 		return ChronoUnit.DAYS.between(dateTo, dateFrom);
 	}
 
-	public String getMessage() {
-		return message;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
 }

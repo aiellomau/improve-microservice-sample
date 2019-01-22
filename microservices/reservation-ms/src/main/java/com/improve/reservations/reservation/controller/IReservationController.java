@@ -65,7 +65,7 @@ public interface IReservationController {
 	 * @return
 	 */
 	@PostMapping("/add")
-	Reservation save(ReservationInfo reservation);
+	Reservation add(ReservationInfo reservation);
 
 	/**
 	 * Update a reservation
@@ -80,8 +80,9 @@ public interface IReservationController {
 	 * Cancel a reservation
 	 * 
 	 * @param reservationId
+	 * @return
 	 */
 	@DeleteMapping("/cancel/{reservationId}")
-	void cancel(Long reservationId);
+	Reservation cancel(Long reservationId);
 
 }

@@ -18,7 +18,7 @@ import com.improve.reservations.reservation.service.util.DateUtils;
 public class AnticipateDaysReservationValidator implements ReservationValidator {
 
 	@Value("${validation.reservation.anticipate.days.error.msg}")
-	private String message;
+	private String errorMessage;
 
 	@Override
 	public void checkConstraint(final ReservationInfo reservation, final Campsite campsite)
@@ -27,7 +27,7 @@ public class AnticipateDaysReservationValidator implements ReservationValidator 
 		final long diff = daysDiff(Date.from(Instant.now()), reservation.getArrivalDate());
 
 		if (diff > campsite.getAnticipateMaxDaysReservation() || diff < campsite.getAnticipateMinDaysReservation()) {
-			throw new AnticipateDaysOutException(getMessage());
+			throw new AnticipateDaysOutException(getErrorMessage());
 		}
 	}
 
@@ -39,8 +39,8 @@ public class AnticipateDaysReservationValidator implements ReservationValidator 
 		return ChronoUnit.DAYS.between(dateTo, dateFrom);
 	}
 
-	public String getMessage() {
-		return message;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
 }

@@ -8,13 +8,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Entity
-@Table(name = "RESERVATIONTABLE")
+@Table(name = "reservation", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "arrivalDate", "departureDate" }, name = "UniqueDatesValidation") })
 public class Reservation {
 
 	@Id

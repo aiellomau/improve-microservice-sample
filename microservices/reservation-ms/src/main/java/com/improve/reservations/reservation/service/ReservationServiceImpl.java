@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import com.improve.reservations.reservation.controller.data.CampsiteAvailabiliti
 import com.improve.reservations.reservation.controller.data.CampsiteAvailability;
 import com.improve.reservations.reservation.controller.data.ReservationInfo;
 import com.improve.reservations.reservation.exception.ReservationBadRequestException;
+import com.improve.reservations.reservation.exception.UnAvailabilityException;
 import com.improve.reservations.reservation.model.Reservation;
 import com.improve.reservations.reservation.model.ReservationStatus;
 import com.improve.reservations.reservation.repository.ReservationRepository;
@@ -62,7 +64,7 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public Reservation save(final ReservationInfo reservationInfo) {
 
-		LOG.debug(String.format("Reserving for campsite %s", reservationInfo.getCampsite().getId()));
+		LOG.debug(String.format("Reserving for campsite [%s]", reservationInfo.getCampsite().getId()));
 
 		final Reservation reservation = new Reservation();
 		reservation.setStatus(ReservationStatus.PENDING);
@@ -72,7 +74,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 		// if all is ok -> reserving
 
-		// Save user reservation data
+		// First, save user reservation data
 		final User uInfo = userClient.save(reservationInfo.getUser());
 
 		reservation.setStatus(ReservationStatus.RESERVED);
@@ -81,7 +83,14 @@ public class ReservationServiceImpl implements ReservationService {
 		reservation.setCampsiteId(reservationInfo.getCampsite().getId());
 		reservation.setUserId(uInfo.getUserId());
 		// do reserve
-		return reservationRepository.save(reservation);
+
+		try {
+			return reservationRepository.save(reservation);
+		} catch (final DataIntegrityViolationException de) {
+			LOG.error("Contraint fail: " + de.getMostSpecificCause().getMessage());
+			throw new UnAvailabilityException(de.getMostSpecificCause().getMessage());
+		}
+
 	}
 
 	/**
@@ -107,9 +116,18 @@ public class ReservationServiceImpl implements ReservationService {
 
 		final Reservation reservation = this.findById(reservationId);
 
-		reservation.setStatus(ReservationStatus.CANCELLED);
+		if (!reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
+			reservation.setStatus(ReservationStatus.CANCELLED);
+			try {
+				return reservationRepository.save(reservation);
+			} catch (final DataIntegrityViolationException de) {
+				LOG.error("Contraint fail: " + de.getMostSpecificCause().getMessage());
+				throw new UnAvailabilityException(de.getMostSpecificCause().getMessage());
+			}
+		}
+		LOG.info(String.format("Reservation [%s] already cancelled.", reservationId));
+		return reservation;
 
-		return reservationRepository.save(reservation);
 	}
 
 	@Override
@@ -150,9 +168,10 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<Reservation> findBetweenDates(final Date from, final Date to, final ReservationStatus status,
 			final Long campsiteId) {
+		final Date fromDate = DateUtils.convert(DateUtils.convert(from).minusDays(1));
 		return reservationRepository
-				.findByArrivalDateGreaterThanEqualAndDepartureDateLessThanEqualAndStatusAndCampsiteId(from, to, status,
-						campsiteId);
+				.findByArrivalDateGreaterThanEqualAndDepartureDateLessThanEqualAndStatusAndCampsiteId(fromDate, to,
+						status, campsiteId);
 	}
 
 	@Autowired
