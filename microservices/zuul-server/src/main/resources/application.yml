@@ -12,7 +12,7 @@ eureka:
       registerWithEureka: true
       fetchRegistry: true  
   instance:
-    leaseRenewalIntervalInSeconds: 10
+    leaseRenewalIntervalInSeconds: 5
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
     preferIpAddress: true

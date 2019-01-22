@@ -118,6 +118,8 @@ public class ReservationServiceImpl implements ReservationService {
 
 		if (!reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
 			reservation.setStatus(ReservationStatus.CANCELLED);
+			reservation.setArrivalDate(null);
+			reservation.setDepartureDate(null);
 			try {
 				return reservationRepository.save(reservation);
 			} catch (final DataIntegrityViolationException de) {
@@ -144,7 +146,12 @@ public class ReservationServiceImpl implements ReservationService {
 		reservation.setArrivalDate(reservationInfo.getArrivalDate());
 		reservation.setDepartureDate(reservationInfo.getDepartureDate());
 
-		return reservationRepository.save(reservation);
+		try {
+			return reservationRepository.save(reservation);
+		} catch (final DataIntegrityViolationException de) {
+			LOG.error("Contraint fail: " + de.getMostSpecificCause().getMessage());
+			throw new UnAvailabilityException(de.getMostSpecificCause().getMessage());
+		}
 
 	}
 
