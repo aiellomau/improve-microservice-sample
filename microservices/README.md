@@ -1,6 +1,6 @@
 
 # Reservation Rest API details
-Note: http://localhost:8762 is teh API Gateway (Zuul) where acts as a proxy for all microservices
+Note: http://localhost:8762 is the API Gateway (Zuul) where acts as a proxy for all microservices
 
 ### Get availables dates
 
