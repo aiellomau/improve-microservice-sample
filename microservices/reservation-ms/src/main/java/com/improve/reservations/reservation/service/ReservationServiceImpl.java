@@ -67,13 +67,13 @@ public class ReservationServiceImpl implements ReservationService {
 		final Reservation reservation = new Reservation();
 		reservation.setStatus(ReservationStatus.PENDING);
 
-		Campsite campsite = getCampsite(reservationInfo);
+		final Campsite campsite = getCampsite(reservationInfo);
 		reservationValidatorService.validate(reservationInfo, campsite);
 
 		// if all is ok -> reserving
 
 		// Save user reservation data
-		User uInfo = userClient.save(reservationInfo.getUser());
+		final User uInfo = userClient.save(reservationInfo.getUser());
 
 		reservation.setStatus(ReservationStatus.RESERVED);
 		reservation.setArrivalDate(reservationInfo.getArrivalDate());
@@ -123,7 +123,6 @@ public class ReservationServiceImpl implements ReservationService {
 
 		reservationValidatorService.validate(reservationInfo, getCampsite(reservationInfo));
 
-		reservation.setStatus(reservationInfo.getStatus());
 		reservation.setArrivalDate(reservationInfo.getArrivalDate());
 		reservation.setDepartureDate(reservationInfo.getDepartureDate());
 

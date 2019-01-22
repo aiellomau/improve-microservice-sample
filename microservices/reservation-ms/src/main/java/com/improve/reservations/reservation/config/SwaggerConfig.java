@@ -1,4 +1,4 @@
-package com.improve.reservations.reservation;
+package com.improve.reservations.reservation.config;
 
 import java.util.Collections;
 

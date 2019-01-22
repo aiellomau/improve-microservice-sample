@@ -19,7 +19,7 @@ public class Reservation {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private long reservationId;
 
 	private long userId;
 
@@ -43,12 +43,12 @@ public class Reservation {
 		this.status = status;
 	}
 
-	public long getId() {
-		return id;
+	public long getReservationId() {
+		return reservationId;
 	}
 
-	public void setId(final long id) {
-		this.id = id;
+	public void setReservationId(long reservationId) {
+		this.reservationId = reservationId;
 	}
 
 	public long getUserId() {
