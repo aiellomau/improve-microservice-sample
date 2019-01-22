@@ -74,7 +74,11 @@ The microservices are:
 
 Future enhancements
 -------------------
-Comunication between microservices are made by using Http RESTFul calls. This is no a good practice in microservices world. When some service interface changes, all dependent services most likely have to be changed and redeployed. Also while redeploying service, you will have to put all dependent services down, which is not considered a good design for high availability standards.
-And also, if we take into account on the synchronous nature of REST, a much better solution is to use publish-subscribe pattern in order to make communication between our services asynchronous.
-So each service subscribes to the events that it is interested in consuming, and then receives these events reliably via a mechanism such as a messaging queue/broker, when the events are placed on the queue by other services.
-This can be done by using a broker Message Bus such as RabbitMQ. 
+> Comunication between microservices are made by using Http RESTFul calls. This is no a good practice in microservices world.
+> When some service interface changes, all dependent services most likely have to be changed and redeployed. Also while
+> redeploying service, you will have to put all dependent services down, which is not considered a good design for high
+> availability standards.
+> And also, if we take into account on the synchronous nature of REST, a much better solution is to use publish-subscribe pattern > in order to make communication between our services asynchronous.
+> So each service subscribes to the events that it is interested in consuming, and then receives these events reliably via 
+> a mechanism such as a messaging queue/broker, when the events are placed on the queue by other services.
+> This can be done by using a broker Message Bus such as RabbitMQ. 
