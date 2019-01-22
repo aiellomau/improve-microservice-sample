@@ -24,11 +24,11 @@ Sample response:
         },
         {
             "date": "2019-01-28T03:00:00.000+0000",
-            "available": true
+            "available": false
         },
         {
             "date": "2019-01-29T03:00:00.000+0000",
-            "available": true
+            "available": false
         },
         {
             "date": "2019-01-30T03:00:00.000+0000",
