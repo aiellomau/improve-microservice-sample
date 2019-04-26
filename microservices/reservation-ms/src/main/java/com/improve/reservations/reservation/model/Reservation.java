@@ -21,11 +21,11 @@ public class Reservation {
 
 	@Id
 	@GeneratedValue
-	private long reservationId;
+	private Long reservationId;
 
-	private long userId;
+	private Long userId;
 
-	private long campsiteId;
+	private Long campsiteId;
 
 	private Date arrivalDate;
 
@@ -38,34 +38,34 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(final long userId, final long campsiteId, final ReservationStatus status) {
+	public Reservation(final Long userId, final Long campsiteId, final ReservationStatus status) {
 		super();
 		this.userId = userId;
 		this.campsiteId = campsiteId;
 		this.status = status;
 	}
 
-	public long getReservationId() {
+	public Long getReservationId() {
 		return reservationId;
 	}
 
-	public void setReservationId(long reservationId) {
+	public void setReservationId(Long reservationId) {
 		this.reservationId = reservationId;
 	}
 
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(final long userId) {
+	public void setUserId(final Long userId) {
 		this.userId = userId;
 	}
 
-	public long getCampsiteId() {
+	public Long getCampsiteId() {
 		return campsiteId;
 	}
 
-	public void setCampsiteId(final long campsiteId) {
+	public void setCampsiteId(final Long campsiteId) {
 		this.campsiteId = campsiteId;
 	}
 

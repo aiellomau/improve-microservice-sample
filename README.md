@@ -15,6 +15,7 @@ Technologies
   different services.
 - Spring Cloud Config isn't used. It is disabled with
   spring.cloud.config.enabled=false in the bootstrap files.
+- Feign - For Rest services connections withing microservices. Avoid Rest API implementation staff.
 
 Assumptions:
 ------------

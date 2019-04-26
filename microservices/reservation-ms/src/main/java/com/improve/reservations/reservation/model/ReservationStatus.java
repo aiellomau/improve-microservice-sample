@@ -31,8 +31,9 @@ public enum ReservationStatus {
 		if (value == null || "".equals(value)) {
 			throw new IllegalArgumentException("Value cannot be null or empty!");
 		}
+
 		for (final ReservationStatus enumEntry : ReservationStatus.values()) {
-			if (enumEntry.toString().equals(value)) {
+			if (value.equals(enumEntry.toString())) {
 				return enumEntry;
 			}
 		}
