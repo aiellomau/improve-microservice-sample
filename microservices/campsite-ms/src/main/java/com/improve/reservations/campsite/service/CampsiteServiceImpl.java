@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.improve.reservations.campsite.model.Campsite;
 import com.improve.reservations.campsite.repository.CampsiteRepository;
+import com.improve.reservations.campsite.service.stream.CampsiteSource;
 
 /**
  * Default Campsite implementation for CRUD operations
@@ -25,22 +26,24 @@ public class CampsiteServiceImpl implements CampsiteService {
 
 	private CampsiteRepository campsiteRepository;
 
-	private CampsiteSource campsiteSourve;
+	private CampsiteSource campsiteSource;
 
 	@Override
 	public void save(final Campsite campsite) {
 		// TODO try Exceptions services
 		this.campsiteRepository.save(campsite);
-		this.campsiteSourve.campsiteNewChannel().send(MessageBuilder.withPayload(campsite).build());
-		LOG.debug("Message Nfor ew sent.");
+		LOG.debug("- saved campsite -");
+		this.campsiteSource.campsiteNewChannel().send(MessageBuilder.withPayload(campsite).build());
+		LOG.debug("- saved campsite msg sent -");
 	}
 
 	@Override
 	public void delete(final Long campsiteId) {
 		// TODO try Exceptions services
 		this.campsiteRepository.deleteById(campsiteId);
-		this.campsiteSourve.campsiteDeleteChannel().send(MessageBuilder.withPayload(campsiteId).build());
-		LOG.debug("Message for Delete sent.");
+		LOG.debug("- deleted campsite -");
+		this.campsiteSource.campsiteDeleteChannel().send(MessageBuilder.withPayload(campsiteId).build());
+		LOG.debug("- deleted campsite msg sent -");
 	}
 
 	@Override
@@ -56,7 +59,7 @@ public class CampsiteServiceImpl implements CampsiteService {
 	}
 
 	@Autowired
-	public void setCampsiteSourve(CampsiteSource campsiteSourve) {
-		this.campsiteSourve = campsiteSourve;
+	public void setCampsiteSource(CampsiteSource campsiteSource) {
+		this.campsiteSource = campsiteSource;
 	}
 }

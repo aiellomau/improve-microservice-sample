@@ -22,10 +22,9 @@ public class CampsiteController implements ICampsiteController {
 	}
 
 	@Override
-	public String newCampsite(@RequestBody Campsite campsite) {
+	public void newCampsite(@RequestBody Campsite campsite) {
 		this.campsiteService.save(campsite);
 		LOG.info(campsite.toString() + "Saved!");
-		return "campsite_new";
 	}
 
 	@Override
