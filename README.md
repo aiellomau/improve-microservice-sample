@@ -59,6 +59,8 @@ $ sh standalone.sh
 
 Then, if all is ok, try to ping Eureka server -> http://localhost:8761/
 
+Read more on: https://github.com/aiellomau/improve-microservice-sample/tree/master/microservices
+
 Microservices Projects
 -------------------
 
