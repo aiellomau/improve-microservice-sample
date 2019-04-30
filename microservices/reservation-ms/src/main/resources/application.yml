@@ -1,33 +1,50 @@
 server:
-  port: 0
-
-spring:
-  application:
-    name: reservation
-    resources:
-      add-mappings: false
-
+   port: 0
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
-    leaseRenewalIntervalInSeconds: 5
-
+   client:
+      serviceUrl:
+         defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+   instance:
+      preferIpAddress: true
+      leaseRenewalIntervalInSeconds: 5
 validation:
-  reservation:
-    max:
-      days:
-        exceeded:
-          msg: Reservation max. days exceeded
-    availability:
-      msg: Dates already take it
-    anticipate:
-      days:
-        error:
-          msg: Not allowed reservation dates
-    date:
-      days:
-        error:
-          msg: Arrival date is after Departure date
+   reservation:
+      max:
+         days:
+            exceeded:
+               msg: Reservation max. days exceeded
+      availability:
+         msg: Dates already take it
+      anticipate:
+         days:
+            error:
+               msg: Not allowed reservation dates
+      date:
+         days:
+            error:
+               msg: Arrival date is after Departure date
+spring:
+   application:
+      name: reservation
+      resources:
+         add-mappings: false
+   cloud:
+      stream:
+         bindings:
+            campsiteNewChannel:
+               destination: campsite.new.exchange
+               binder: rabbit1
+            campsiteDeleteChannel:
+               destination: campsite.delete.exchange
+               binder: rabbit1
+         binders:
+           rabbit1:
+             type: rabbit
+             environment:
+               spring:
+                  rabbitmq:
+                     host: localhost
+                     port: 5672
+                     username: guest
+                     password: guest
+
