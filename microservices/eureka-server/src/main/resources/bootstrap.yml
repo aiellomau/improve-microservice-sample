@@ -4,12 +4,10 @@ spring:
   cloud:
     config:
       enabled: false
-      security.basic.enable: false   
-
+      security.basic.enable: false
 management:
   security:
-    enabled: false 
-
+    enabled: false
 zuul:
   host:
     socket-timeout-millis: 30000
