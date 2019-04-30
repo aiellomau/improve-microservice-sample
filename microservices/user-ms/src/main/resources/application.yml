@@ -1,21 +1,36 @@
+server:
+   port: 0
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+   instance:
+      preferIpAddress: true
+      leaseRenewalIntervalInSeconds: 5
+            
 spring:
-  application:
-    name: user
-  cloud:
-    refresh:
-      refreshable: none
+   application:
+      name: user
+   cloud:
+      refresh:
+         refreshable: none
       stream:
          bindings:
-            output:
-               destination: user-exchange
+            userNewChannel:
+               destination: user.new.exchange
+               contentType: application/json
                binder: rabbit1
-server:
-  port: 0
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
-    leaseRenewalIntervalInSeconds: 5
+            userDeleteChannel:
+               destination: user.delete.exchange
+               contentType: application/json
+               binder: rabbit1
+         binders:
+           rabbit1:
+             type: rabbit
+             environment:
+               spring:
+                  rabbitmq:
+                     host: localhost
+                     port: 5672
+                     username: guest
+                     password: guest

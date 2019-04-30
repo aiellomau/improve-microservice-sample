@@ -12,7 +12,7 @@ public interface ICampsiteController {
 	Campsite findById(Long id);
 
 	@PostMapping("/add")
-	String newCampsite(Campsite campsite);
+	void newCampsite(Campsite campsite);
 
 	@DeleteMapping("/delete/{campsiteId}")
 	void deleteCampsite(Long campsiteId);

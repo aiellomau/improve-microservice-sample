@@ -37,6 +37,12 @@ spring:
             campsiteDeleteChannel:
                destination: campsite.delete.exchange
                binder: rabbit1
+            userNewChannel:
+               destination: user.new.exchange
+               binder: rabbit1
+            userDeleteChannel:
+               destination: user.delete.exchange
+               binder: rabbit1
          binders:
            rabbit1:
              type: rabbit

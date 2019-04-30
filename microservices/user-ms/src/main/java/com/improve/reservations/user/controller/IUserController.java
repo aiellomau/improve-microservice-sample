@@ -1,5 +1,6 @@
 package com.improve.reservations.user.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -12,5 +13,8 @@ public interface IUserController {
 
 	@PostMapping("/add")
 	User save(User user);
+
+	@DeleteMapping("/delete/{userId}")
+	void deleteUser(Long userId);
 
 }
