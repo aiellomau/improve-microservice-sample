@@ -16,6 +16,7 @@ Technologies
 - Spring Cloud Config isn't used. It is disabled with
   spring.cloud.config.enabled=false in the bootstrap files.
 - Feign - For Rest services connections withing microservices. Avoid Rest API implementation staff.
+- RabbitMQ - For exchanges messages between microservices
 
 Assumptions:
 ------------
@@ -73,6 +74,7 @@ The microservices are:
 
 
 RabbitMQ instance (Just for testing comunication between microservices)
+-------------------
 
 ```sh
 docker pull rabbitmq:3-management
