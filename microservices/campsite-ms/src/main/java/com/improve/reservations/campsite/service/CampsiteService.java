@@ -12,6 +12,8 @@ public interface CampsiteService {
 
 	void save(Campsite campsite);
 
+	void delete(Long campsiteId);
+
 	Campsite findById(Long campsiteId);
 
 }

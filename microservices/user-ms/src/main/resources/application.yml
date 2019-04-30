@@ -4,7 +4,11 @@ spring:
   cloud:
     refresh:
       refreshable: none
-
+      stream:
+         bindings:
+            output:
+               destination: user-exchange
+               binder: rabbit1
 server:
   port: 0
 

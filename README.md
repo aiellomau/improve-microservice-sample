@@ -29,7 +29,7 @@ At the moment I use hsqldb as datastore. In future I will move to a Nosql or a R
 
 How To Run
 ----------
-Each Microservice has it own script names standalone.sh. Is recomended to hace several terminals to run all services in console.
+Each Microservice has it own script names standalone.sh. Is recomended to have several terminals to run all.
 ```sh
 # Start Discovery
 $ cd eureka-server
@@ -71,6 +71,18 @@ The microservices are:
 - user: is responsible for customers.
 - reservation: does reservation processing. It uses campsite and user microservices.
 
+
+RabbitMQ instance (Just for testing comunication between microservices)
+
+```sh
+docker pull rabbitmq:3-management
+```
+```sh
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+```
+
+
+
 ![Microservices](https://raw.githubusercontent.com/aiellomau/improve-microservice-sample/master/docs/Reservation%20Island%20-%20Microservices.png)
 
 Future enhancements
@@ -83,3 +95,4 @@ Future enhancements
 > So each service subscribes to the events that it is interested in consuming, and then receives these events reliably via 
 > a mechanism such as a messaging queue/broker, when the events are placed on the queue by other services.
 > This can be done by using a broker Message Bus such as RabbitMQ. 
+
