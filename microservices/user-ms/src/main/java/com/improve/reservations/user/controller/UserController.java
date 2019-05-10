@@ -12,11 +12,10 @@ import com.improve.reservations.user.service.UserService;
 
 @RestController
 public class UserController implements IUserController {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
 	private UserService userService;
-	
 
 	@Override
 	public void deleteUser(@PathVariable("userId") Long userId) {
@@ -35,7 +34,6 @@ public class UserController implements IUserController {
 		LOG.info(user.toString() + "Saving");
 		return userService.save(user);
 	}
-	
 
 	@Autowired
 	public void setUserService(final UserService userService) {

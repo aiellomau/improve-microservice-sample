@@ -24,10 +24,6 @@ validation:
         error:
           msg: Arrival date is after Departure date
 spring:
-  application:
-    name: reservation
-    resources:
-      add-mappings: false
   cloud:
     stream:
       bindings:

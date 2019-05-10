@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -17,6 +18,8 @@
 	<modules>
 		<module>zuul-server</module>
 		<module>eureka-server</module>
+		<!--module>dashboard-server</module-->
+		<module>config-server</module>
 		<module>user-ms</module>
 		<module>campsite-ms</module>
 		<module>reservation-ms</module>
@@ -27,8 +30,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
-	        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+		<spring-boot.version>2.1.2.RELEASE</spring-boot.version>
 		<spring-cloud-starter-feign.version>1.4.6.RELEASE</spring-cloud-starter-feign.version>
+		<spring-cloud-starter-hystrix.version>1.4.0.RELEASE</spring-cloud-starter-hystrix.version>
 		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 	</properties>
 

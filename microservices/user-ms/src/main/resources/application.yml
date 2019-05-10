@@ -8,11 +8,7 @@ eureka:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
 spring:
-  application:
-    name: user
   cloud:
-    refresh:
-      refreshable: none
     stream:
       bindings:
         userNewChannel:

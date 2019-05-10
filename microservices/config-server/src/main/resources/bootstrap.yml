@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      enabled: false
+      security.basic.enable: false
+      server:
+        git:
+          uri: https://github.com/aiellomau/improve-microservice-configserver.git
