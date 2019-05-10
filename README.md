@@ -71,7 +71,7 @@ Microservices Projects
 The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
 - eureka-server: is the Eureka server for service discovery.
-- config-server: is the Config server. It hold all properties values for each ms.
+- config-server: is the Config server. It hold all properties values for each ms. All properties are hosting on GitHub: https://github.com/aiellomau/improve-microservice-configserver
 - zuul-server: is the Zuul server. It distributes the requests to the three microservices.
 
 The microservices are: 
@@ -96,4 +96,4 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 Future enhancements
 -------------------
-> DashBoard is not finished yet. So next steps is to get it's works
+> DashBoard is not finished yet. So the next steps are to get its works.
