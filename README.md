@@ -13,8 +13,7 @@ Technologies
 - Hystrix is used for resilience.
 - Zuul is used to route HTTP requests from the outside to the
   different services.
-- Spring Cloud Config isn't used. It is disabled with
-  spring.cloud.config.enabled=false in the bootstrap files.
+- Spring Cloud Config
 - Feign - For Rest services connections withing microservices. Avoid Rest API implementation staff.
 - RabbitMQ - For exchanges messages between microservices
 
@@ -34,6 +33,11 @@ Each Microservice has it own script names standalone.sh. Is recomended to have s
 ```sh
 # Start Discovery
 $ cd eureka-server
+$ sh standalone.sh
+```
+```sh
+# Config Server
+$ cd config-server
 $ sh standalone.sh
 ```
 ```sh
@@ -67,6 +71,7 @@ Microservices Projects
 The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
 - eureka-server: is the Eureka server for service discovery.
+- config-server: is the Config server. It hold all properties values for each ms.
 - zuul-server: is the Zuul server. It distributes the requests to the three microservices.
 
 The microservices are: 
@@ -91,12 +96,4 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 Future enhancements
 -------------------
-> Comunication between microservices are made by using Http RESTFul calls. This is no a good practice in microservices world.
-> When some service interface changes, all dependent services most likely have to be changed and redeployed. Also while
-> redeploying service, you will have to put all dependent services down, which is not considered a good design for high
-> availability standards.
-> And also, if we take into account on the synchronous nature of REST, a much better solution is to use publish-subscribe pattern > in order to make communication between our services asynchronous.
-> So each service subscribes to the events that it is interested in consuming, and then receives these events reliably via 
-> a mechanism such as a messaging queue/broker, when the events are placed on the queue by other services.
-> This can be done by using a broker Message Bus such as RabbitMQ. 
-
+> DashBoard is not finished yet. So next steps is to get it's works
