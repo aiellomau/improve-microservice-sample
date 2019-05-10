@@ -16,3 +16,5 @@ spring:
       refreshable: none
   profiles:
     active: local
+encrypt:
+  key: secretKey

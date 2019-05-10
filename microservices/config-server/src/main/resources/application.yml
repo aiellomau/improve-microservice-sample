@@ -25,5 +25,3 @@ management:
     cors:
       allowed-origins: true
       enabled-by-default: false
-encrypt:
-  key: secretkey

@@ -13,7 +13,7 @@ public class MainController implements IMainController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
-	@Value("${project.name}")
+	@Value("${encrypted.property}")
 	private String projectName;
 
 	@Override
@@ -22,7 +22,7 @@ public class MainController implements IMainController {
 		LOG.debug("Getting property: " + propertyId);
 		
 		switch (propertyId) {
-		case "project.name":
+		case "encrypted.property":
 			return projectName;
 
 		default:
