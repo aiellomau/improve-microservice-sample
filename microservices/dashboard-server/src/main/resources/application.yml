@@ -1,5 +1,5 @@
-erver:
-  port: 0
+server:
+  port: 8763 
 eureka:
   client:
     serviceUrl:
@@ -7,3 +7,12 @@ eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
+spring:
+  security:
+    user:
+      name: admin
+      password: abc!123
+  boot:
+    admin:
+      discovery:
+        ignored-services: dashboard-server
