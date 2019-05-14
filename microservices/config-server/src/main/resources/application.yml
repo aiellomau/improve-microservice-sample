@@ -25,3 +25,8 @@ management:
     cors:
       allowed-origins: true
       enabled-by-default: false
+spring:
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password
