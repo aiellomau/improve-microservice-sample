@@ -1,5 +1,6 @@
 Microservice Sample - Island Reservations
 ==============
+The goal of this sample project is to describe how to use spring in a microservices environment.
 
 It uses three microservices:
 - Reservation to process reservations on campsite.
