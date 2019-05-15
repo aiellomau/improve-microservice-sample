@@ -100,7 +100,7 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 
 
-![Microservices](https://raw.githubusercontent.com/aiellomau/improve-microservice-sample/master/docs/Reservation%20Island%20-%20Microservices.png)
+![Microservices](https://github.com/aiellomau/improve-microservice-sample/blob/master/docs/Reservation%20Island%20-%20Microservices.png)
 
 Future enhancements
 -------------------
