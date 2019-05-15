@@ -9,13 +9,14 @@ It uses three microservices:
 Technologies
 ------------
 
-- Eureka for Lookup
+- Eureka for Lookup.
 - Hystrix is used for resilience.
 - Zuul is used to route HTTP requests from the outside to the
   different services.
-- Spring Cloud Config
+- Spring Cloud Config.
+- Spring Boot Admin. Use as a dashboard of all microservices.
 - Feign - For Rest services connections withing microservices. Avoid Rest API implementation staff.
-- RabbitMQ - For exchanges messages between microservices
+- RabbitMQ - For exchanges messages between microservices.
 
 Assumptions:
 ------------
@@ -38,6 +39,11 @@ $ sh standalone.sh
 ```sh
 # Config Server
 $ cd config-server
+$ sh standalone.sh
+```
+```sh
+# Dashboard
+$ cd dashboard-server
 $ sh standalone.sh
 ```
 ```sh
@@ -72,7 +78,8 @@ The servers for the infrastruture are pretty simple thanks to Spring Cloud:
 
 - eureka-server: is the Eureka server for service discovery.
 - config-server: is the Config server. It hold all properties values for each ms. All properties are hosting on GitHub: https://github.com/aiellomau/improve-microservice-configserver
-- zuul-server: is the Zuul server. It distributes the requests to the three microservices.
+- dashboard-server: Monitor all microservices instances.
+- zuul-server: is the Zuul server. Distributes the requests to the three microservices.
 
 The microservices are: 
 - campsite: is the application to take care of items.
@@ -96,4 +103,4 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 Future enhancements
 -------------------
-> DashBoard is not finished yet. So the next steps are to get its works.
+> Add Docker-Swarn / Kubernetes.
