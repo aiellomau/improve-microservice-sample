@@ -1,8 +1,5 @@
 server:
   port: 8762
-spring:
-  application:
-    name: zuul
 eureka:
   client:
     serviceUrl:
@@ -12,8 +9,31 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
     statusPageUrlPath: /info
-    healthCheckUrlPath: /health
+    healthCheckUrlPath: /actuator/health
     preferIpAddress: true
+spring:
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
 logging:
   level:
     ROOT: INFO
