@@ -41,9 +41,15 @@ docker service create \
 
 ### Use our Spring Microservice with docker
 On the root folder ../ crea a Dockerfile:
->FROM alpine:edge
->MAINTAINER javaonfly
->RUN apk add --no-cache openjdk8
+```sh
+nano Dockerfile
+```
+```
+FROM alpine:edge
+MAINTAINER javaonfly
+RUN apk add --no-cache openjdk8
+```
+
 ### Build base image
 ```sh
 docker build --tag=alpine-jdk:base --rm=true .
@@ -53,12 +59,14 @@ Go to eureka-server project. cd $eureka_project
 ```sh
 nano Dockerfile-EurekaServer
 ```
-> FROM alpine-jdk:base
-> MAINTAINER javaonfly
-> COPY target/eureka-server-0.0.1-SNAPSHOT.jar /opt/lib/
-> ENTRYPOINT ["/usr/bin/java"]
-> CMD ["-jar", "/opt/lib/eureka-server-0.0.1-SNAPSHOT.jar"]
-> EXPOSE 8761
+```
+FROM alpine-jdk:base
+MAINTAINER javaonfly
+COPY target/eureka-server-0.0.1-SNAPSHOT.jar /opt/lib/
+ENTRYPOINT ["/usr/bin/java"]
+CMD ["-jar", "/opt/lib/eureka-server-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8761
+```
 
 Build eureka-server image.
 Before build microservice
@@ -90,9 +98,11 @@ docker service rm eureka-server
 ```
 
 ### Unregister worker nodes
+```sh
 for i in $(seq "${NUM_WORKERS}"); do
 	docker --host=localhost:${i}2375 swarm leave
 done
+```
 
 ### Remove worker nodes
 ```sh
