@@ -11,7 +11,29 @@ eureka:
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
     preferIpAddress: true
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
 spring:
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password
   cloud:
     stream:
       bindings:
@@ -33,26 +55,4 @@ spring:
                 port: 5672
                 username: guest
                 password: guest
-spring:
-  boot.admin.client:
-    url: http://localhost:8763
-    username: admin
-    password: password
-management:
-  security:
-    enabled: false
-  endpoint:
-    health:
-      enabled: true
-      show-details: always
-  endpoints:
-    jmx:
-      exposure:
-        include: '*'
-    web:
-      exposure:
-        include: '*'
-        base-path: /actuator
-    cors:
-      allowed-origins: true
-      enabled-by-default: false
+
