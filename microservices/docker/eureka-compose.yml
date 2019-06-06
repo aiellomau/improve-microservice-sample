@@ -1,0 +1,30 @@
+version: '3'
+services:
+  eureka-server1:
+    image: improve/eureka-server
+    networks:
+      springcloud-overlay:
+        aliases:
+          - eureka
+    ports:
+      - "8761:8761"
+    environment:
+      - ADDITIONAL_EUREKA_SERVER_LIST=http://eureka-server2:8761/eureka/
+    labels:
+      - "aliyun.logs.eureka=stdout"
+  eureka-server2:
+    image: improve/eureka-server
+    networks:
+      springcloud-overlay:
+        aliases:
+          - eureka
+    ports:
+      - "8762:8761"
+    environment:
+      - ADDITIONAL_EUREKA_SERVER_LIST=http://eureka-server1:8761/eureka/
+
+
+networks:
+  springcloud-overlay:
+    external:
+      name: springcloud-overlay

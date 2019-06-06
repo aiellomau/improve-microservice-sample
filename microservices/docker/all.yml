@@ -1,0 +1,21 @@
+version: '3'
+services:
+  eureka-server:
+    image: improve/eureka-server
+    ports:
+      - "8761"
+
+  config-server:
+    image: improve/config-server
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eureka-server:8761/eureka
+    ports:
+      - "8888"
+      
+  zuul-server:
+    image: improve/zuul-server
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eureka-server:8761/eureka
+    ports:
+      - "8762"
+

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  config-server:
+    image: improve/config-server
+    networks:
+      - springcloud-overlay
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eureka:8761/eureka
+    ports:
+      - "8888"
+      
+  zuul-server:
+    image: improve/zuul-server
+    networks:
+      - springcloud-overlay
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eureka:8761/eureka
+    ports:
+      - "8762"
+networks:
+  springcloud-overlay:
+    external:
+      name: springcloud-overlay

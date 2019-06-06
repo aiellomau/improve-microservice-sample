@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NUM_WORKERS=2
+DOCKER_VERSION=18.09.6-dind
 
 ### Remove services
 echo "Removing eureka-server service"

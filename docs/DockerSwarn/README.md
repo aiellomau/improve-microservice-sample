@@ -90,7 +90,7 @@ docker service create --name eureka-server --detach=false -p 8761:8761 eureka-se
 ### Finally Scale
 Scale up to 4 instances
 ```sh
-docker service scale eureka-service=4 --detach=true
+docker service scale eureka-server=4 --detach=true
 ```
 ### Remove service
 ```sh
