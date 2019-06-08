@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ import com.improve.reservations.campsite.service.CampsiteService;
 @EnableAutoConfiguration
 @EnableDiscoveryClient
 @Component
+@RefreshScope
 public class CampsiteApp {
 
 	private final Logger LOG = LoggerFactory.getLogger(CampsiteApp.class);

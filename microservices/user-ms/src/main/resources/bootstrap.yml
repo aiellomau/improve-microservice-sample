@@ -1,6 +1,8 @@
 spring:
   application:
     name: user
+    resources:
+      add-mappings: false
   cloud:
     config:
       enabled: true

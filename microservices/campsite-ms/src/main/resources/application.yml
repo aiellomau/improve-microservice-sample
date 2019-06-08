@@ -31,11 +31,15 @@ spring:
       bindings:
         campsiteNewChannel:
           destination: campsite.new.exchange
-          contentType: application/json
           binder: rabbit1
         campsiteDeleteChannel:
           destination: campsite.delete.exchange
-          contentType: application/json
+          binder: rabbit1
+        userNewChannel:
+          destination: user.new.exchange
+          binder: rabbit1
+        userDeleteChannel:
+          destination: user.delete.exchange
           binder: rabbit1
       binders:
         rabbit1:
@@ -51,3 +55,4 @@ spring:
     url: http://localhost:8763
     username: admin
     password: password
+
