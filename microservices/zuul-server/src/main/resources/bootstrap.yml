@@ -1,6 +1,8 @@
 spring:
   application:
     name: zuul
+    resources:
+      add-mappings: false
   cloud:
     config:
       enabled: true
