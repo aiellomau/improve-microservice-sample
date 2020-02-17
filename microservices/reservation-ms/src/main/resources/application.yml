@@ -26,6 +26,13 @@ management:
       allowed-origins: true
       enabled-by-default: false
 spring:
+  application: 
+    name: reservation
+    title: ^project.name^
+  profiles:
+    active: default
+  resources:
+    add-mappings: false
   cloud:
     stream:
       bindings:
