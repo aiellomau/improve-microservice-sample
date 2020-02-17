@@ -30,7 +30,7 @@ import com.improve.reservations.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UserApp.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@ActiveProfiles({"test"})
 public class UserWebIntegrationTest {
 
 	@Autowired
@@ -46,6 +46,7 @@ public class UserWebIntegrationTest {
 	@Before
 	public void setUp() {
 		restTemplate = new RestTemplate();
+		userService.save(new User("Peter", "Tosk", "petertosk@mail.com"));
 		userPeter = userService.findByLastname("Tosk").get(0);
 	}
 

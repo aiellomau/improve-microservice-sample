@@ -7,22 +7,24 @@ eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
-validation:
-  reservation:
-    max:
-      days:
-        exceeded:
-          msg: Reservation max. days exceeded
-    availability:
-      msg: Dates already take it
-    anticipate:
-      days:
-        error:
-          msg: Not allowed reservation dates
-    date:
-      days:
-        error:
-          msg: Arrival date is after Departure date
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
 spring:
   application: 
     name: ^project.artifactId^
@@ -57,3 +59,23 @@ spring:
                 port: 5672
                 username: guest
                 password: guest
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password
+validation:
+  reservation:
+    max:
+      days:
+        exceeded:
+          msg: Reservation max. days exceeded
+    availability:
+      msg: Dates already take it
+    anticipate:
+      days:
+        error:
+          msg: Not allowed reservation dates
+    date:
+      days:
+        error:
+          msg: Arrival date is after Departure date

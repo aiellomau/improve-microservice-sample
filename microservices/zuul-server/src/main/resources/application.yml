@@ -1,20 +1,36 @@
 server:
   port: 8762
-spring:
-  application:
-    name: zuul
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-      registerWithEureka: true
-      fetchRegistry: true
   instance:
-    leaseRenewalIntervalInSeconds: 5
-    statusPageUrlPath: /info
-    healthCheckUrlPath: /health
     preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 5
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
 logging:
   level:
     ROOT: INFO
     org.springframework.web: DEBUG
+spring:
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password

@@ -7,21 +7,39 @@ eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+        base-path: /actuator
+    cors:
+      allowed-origins: true
+      enabled-by-default: false
 spring:
-  application:
-    name: user
   cloud:
-    refresh:
-      refreshable: none
     stream:
       bindings:
+        campsiteNewChannel:
+          destination: campsite.new.exchange
+          binder: rabbit1
+        campsiteDeleteChannel:
+          destination: campsite.delete.exchange
+          binder: rabbit1
         userNewChannel:
           destination: user.new.exchange
-          contentType: application/json
           binder: rabbit1
         userDeleteChannel:
           destination: user.delete.exchange
-          contentType: application/json
           binder: rabbit1
       binders:
         rabbit1:
@@ -33,3 +51,7 @@ spring:
                 port: 5672
                 username: guest
                 password: guest
+  boot.admin.client:
+    url: http://localhost:8763
+    username: admin
+    password: password
