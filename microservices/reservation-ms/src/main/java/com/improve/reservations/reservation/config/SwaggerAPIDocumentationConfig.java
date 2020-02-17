@@ -37,16 +37,13 @@ public class SwaggerAPIDocumentationConfig {
 	@Value("${spring.application.title}")
 	private String title;
 
-	@Value("${spring.application.version}")
-	private String appVersion;
-
 	@Value("${spring.profiles.active}")
 	private String profile;
 
 	ApiInfo apiInfo() {
 
 		// @formatter:off
-		return new ApiInfoBuilder().title(title).description("Reservation REST API").version(appVersion)
+		return new ApiInfoBuilder().title(title).description("Reservation REST API")
 				.contact(new Contact("Mauricio Aiello", "https://github.com/aiellomau", "mauricio.aiello@gmail.com"))
 				.build();
 		// @formatter:on

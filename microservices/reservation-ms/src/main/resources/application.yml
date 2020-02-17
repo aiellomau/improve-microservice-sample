@@ -27,8 +27,7 @@ management:
       enabled-by-default: false
 spring:
   application: 
-    name: ^project.artifactId^
-    version: ^project.version^
+    name: reservation
     title: ^project.name^
   profiles:
     active: default
