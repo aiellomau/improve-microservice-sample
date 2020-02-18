@@ -8,6 +8,10 @@ eureka:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
 spring:
+  application: 
+    name: ^project.artifactId^
+    version: ^project.version^
+    title: ^project.name^
   security:
     user:
       name: admin

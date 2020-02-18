@@ -26,6 +26,10 @@ management:
       allowed-origins: true
       enabled-by-default: false
 spring:
+  application: 
+    name: ^project.artifactId^
+    version: ^project.version^
+    title: ^project.name^
   boot.admin.client:
     url: http://localhost:8763
     username: admin

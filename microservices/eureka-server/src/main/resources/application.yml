@@ -8,3 +8,8 @@ eureka:
     waitTimeInMsWhenSyncEmpty: 0
 endpoints:
   sensitive: false
+spring:
+  application: 
+    name: ^project.artifactId^
+    version: ^project.version^
+    title: ^project.name^
