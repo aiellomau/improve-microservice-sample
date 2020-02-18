@@ -30,8 +30,6 @@ spring:
     name: ^project.artifactId^
     version: ^project.version^
     title: ^project.name^
-  profiles:
-    active: default
   resources:
     add-mappings: true
   mvc:
