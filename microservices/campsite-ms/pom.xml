@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>campsite-ms</artifactId>
+	<artifactId>campsite</artifactId>
 
 	<dependencies>
 

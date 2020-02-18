@@ -31,6 +31,10 @@ logging:
     ROOT: INFO
     org.springframework.web: DEBUG
 spring:
+  application: 
+    name: ^project.artifactId^
+    version: ^project.version^
+    title: ^project.name^
   boot.admin.client:
     url: http://localhost:8763
     username: admin
