@@ -1,8 +1,4 @@
 spring:
-  application:
-    name: user
-    resources:
-      add-mappings: false
   cloud:
     config:
       enabled: true
@@ -14,7 +10,5 @@ spring:
         maxAttempts: 30
     refresh:
       refreshable: none
-  profiles:
-    active: local
 encrypt:
   key: secretKey

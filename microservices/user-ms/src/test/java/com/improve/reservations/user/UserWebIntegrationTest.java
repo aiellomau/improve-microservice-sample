@@ -12,8 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -30,18 +32,27 @@ import com.improve.reservations.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = UserApp.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles({"test"})
+@ActiveProfiles({ "test" })
 public class UserWebIntegrationTest {
 
 	@Autowired
 	private UserService userService;
 
-	@Value("${local.server.port}")
+	@LocalServerPort
 	private int serverPort;
 
 	private RestTemplate restTemplate;
 
 	private User userPeter;
+	
+	@Value("${encrypted.property}")
+	private String encProp;
+	
+	
+	@Value("${project.name}")
+	private String projectName;
+	
+
 
 	@Before
 	public void setUp() {
@@ -52,6 +63,9 @@ public class UserWebIntegrationTest {
 
 	@Test
 	public void findByUserId_Ok() {
+		
+		System.out.println(encProp);
+		System.out.println(projectName);
 
 		final String url = userURL() + "user/" + userPeter.getId();
 		final ResponseEntity<User> response = requestGet(User.class, MediaType.APPLICATION_JSON, url);

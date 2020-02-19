@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: test
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: false
+encrypt:
+  key: secretkey

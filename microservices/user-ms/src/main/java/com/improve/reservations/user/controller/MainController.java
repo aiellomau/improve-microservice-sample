@@ -13,8 +13,8 @@ public class MainController implements IMainController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
-	@Value("${encrypted.property}")
-	private String projectName;
+	@Value("${encrypted.property:empty}")
+	private String encryptedKey;
 
 	@Override
 	public String configById(@PathVariable("propertyId") String propertyId) {
@@ -23,7 +23,7 @@ public class MainController implements IMainController {
 		
 		switch (propertyId) {
 		case "encrypted.property":
-			return projectName;
+			return encryptedKey;
 
 		default:
 			break;
