@@ -3,8 +3,8 @@ package com.improve.reservations.reservation.campsitestub;
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.PagedResources.PageMetadata;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.PagedModel.PageMetadata;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,8 +28,8 @@ public class CampsiteStub {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public PagedResources<Campsite> getAll() {
-		return new PagedResources<Campsite>(Arrays.asList(new Campsite(1, "Campsite 1")), new PageMetadata(1, 0, 1));
+	public PagedModel<Campsite> getAll() {
+		return new PagedModel<Campsite>(Arrays.asList(new Campsite(1, "Campsite 1")), new PageMetadata(1, 0, 1));
 	}
 
 }

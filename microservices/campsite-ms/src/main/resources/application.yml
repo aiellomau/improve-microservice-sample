@@ -58,10 +58,10 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: ${RABBITMQ_SERVICE_HOST}
-                port: ${RABBITMQ_SERVICE_PORT}
-                username: ${RABBITMQ_USERNAME}
-                password: ${RABBITMQ_PASSWORD}
+                host: ${RABBITMQ_SERVICE_HOST:localhost}
+                port: ${RABBITMQ_SERVICE_PORT:5672}
+                username: ${RABBITMQ_USERNAME:guest}
+                password: ${RABBITMQ_PASSWORD:guest}
     config:
       enabled: false
       discovery:

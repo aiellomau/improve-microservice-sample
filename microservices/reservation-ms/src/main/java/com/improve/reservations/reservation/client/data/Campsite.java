@@ -3,11 +3,11 @@ package com.improve.reservations.reservation.client.data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Campsite extends ResourceSupport {
+public class Campsite extends RepresentationModel<Campsite> {
 
 	private String name;
 

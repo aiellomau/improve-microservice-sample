@@ -3,8 +3,8 @@ package com.improve.reservations.reservation.userstub;
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Profile;
-import org.springframework.hateoas.PagedResources;
-import org.springframework.hateoas.PagedResources.PageMetadata;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.PagedModel.PageMetadata;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +29,8 @@ public class UserStub {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public PagedResources<User> getAll() {
-		return new PagedResources<User>(Arrays.asList(new User(42, "Eberhard", "Wolff", "eberhard.wolff@gmail.com")),
+	public PagedModel<User> getAll() {
+		return new PagedModel<User>(Arrays.asList(new User(42, "Eberhard", "Wolff", "eberhard.wolff@gmail.com")),
 				new PageMetadata(1, 0, 1));
 	}
 

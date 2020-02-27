@@ -3,11 +3,11 @@ package com.improve.reservations.reservation.client.data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class User extends ResourceSupport {
+public class User extends RepresentationModel<User> {
 
 	private String lastname;
 
@@ -39,7 +39,7 @@ public class User extends ResourceSupport {
 	public String getLastname() {
 		return lastname;
 	}
-	
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
