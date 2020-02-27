@@ -1,12 +1,15 @@
-server:
-  port: 0
+#server:
+#  port: 0
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    preferIpAddress: true
+#    leaseRenewalIntervalInSeconds: 5
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
-    leaseRenewalIntervalInSeconds: 5
+    enabled: false
 management:
   security:
     enabled: false
@@ -55,11 +58,15 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: localhost
-                port: 5672
-                username: guest
-                password: guest
-  boot.admin.client:
-    url: http://localhost:8763
-    username: admin
-    password: password
+                host: ${RABBITMQ_SERVICE_HOST:localhost}
+                port: ${RABBITMQ_SERVICE_PORT:5672}
+                username: ${RABBITMQ_USERNAME:guest}
+                password: ${RABBITMQ_PASSWORD:guest}
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+#  boot.admin.client:
+#    url: http://localhost:8763
+#    username: admin
+#    password: password

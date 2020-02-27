@@ -1,14 +1,8 @@
 spring:
   cloud:
     config:
-      enabled: true
+      enabled: false
       discovery:
-        enabled: true
-        serviceId: config-server
-      retry:
-        initialInterval: 2000
-        maxAttempts: 30
-    refresh:
-      refreshable: none
+        enabled: false
 encrypt:
   key: secretKey

@@ -2,6 +2,20 @@ user:
   service:
     host: localhost
     port: ${server.port}
+    
+spring:
+  cloud:
+    stream:
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: ${RABBITMQ_SERVICE_HOST:localhost}
+                port: ${RABBITMQ_SERVICE_PORT:5672}
+                username: ${RABBITMQ_USERNAME:guest}
+                password: ${RABBITMQ_PASSWORD:guest}
 
 eureka:
   client:

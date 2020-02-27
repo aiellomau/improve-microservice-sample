@@ -12,10 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -38,21 +36,12 @@ public class UserWebIntegrationTest {
 	@Autowired
 	private UserService userService;
 
-	@LocalServerPort
+	@Value("${local.server.port}")
 	private int serverPort;
 
-	private RestTemplate restTemplate;
-
 	private User userPeter;
-	
-	@Value("${encrypted.property}")
-	private String encProp;
-	
-	
-	@Value("${project.name}")
-	private String projectName;
-	
 
+	private RestTemplate restTemplate;
 
 	@Before
 	public void setUp() {
@@ -61,13 +50,14 @@ public class UserWebIntegrationTest {
 		userPeter = userService.findByLastname("Tosk").get(0);
 	}
 
+	private String userURL() {
+		return "http://localhost:" + serverPort;
+	}
+
 	@Test
 	public void findByUserId_Ok() {
-		
-		System.out.println(encProp);
-		System.out.println(projectName);
 
-		final String url = userURL() + "user/" + userPeter.getId();
+		final String url = userURL() + "/user/" + userPeter.getId();
 		final ResponseEntity<User> response = requestGet(User.class, MediaType.APPLICATION_JSON, url);
 
 		assertThat(response.getBody(), equalTo(userPeter));
@@ -75,7 +65,7 @@ public class UserWebIntegrationTest {
 
 	@Test
 	public void findUserById_NotFound() {
-		final String url = userURL() + "user/" + userPeter.getId();
+		final String url = userURL() + "/user/" + userPeter.getId();
 		try {
 			requestGet(User.class, MediaType.APPLICATION_JSON, url);
 		} catch (final Exception e) {
@@ -83,10 +73,6 @@ public class UserWebIntegrationTest {
 			final HttpClientErrorException httpError = (HttpClientErrorException) e;
 			assertEquals(HttpStatus.NOT_FOUND, httpError.getStatusCode());
 		}
-	}
-
-	private String userURL() {
-		return "http://localhost:" + serverPort + "/";
 	}
 
 	private <T> ResponseEntity<T> requestGet(final Class<T> value, final MediaType mediaType, final String url) {

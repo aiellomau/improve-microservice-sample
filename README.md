@@ -103,4 +103,4 @@ docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:567
 
 Future enhancements
 -------------------
-> Add Docker-Swarn / Kubernetes.
+> Deploy Configuration using Kubernetes.
