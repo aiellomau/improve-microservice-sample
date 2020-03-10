@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zuul
+  labels:
+    app: zuul
+  namespace: improve-ns
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: zuul
+  type: NodePort

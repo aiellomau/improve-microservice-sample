@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: campsite
+  labels:
+    app: campsite
+  namespace: improve-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: campsite
+  template:
+    metadata:
+      labels:
+        app: campsite
+    spec:
+      containers:
+      - name: campsite
+        image: maiello/improve_campsite:0.0.2-SNAPSHOT
+        ports:
+        - containerPort: 8080
+        env:
+        - name: RABBITMQ_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq
+              key: rabbitmq-username
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq
+              key: rabbitmq-password

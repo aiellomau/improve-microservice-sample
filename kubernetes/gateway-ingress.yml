@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  namespace: improve-ns
+  annotations:
+    INGRESS.kubernetes.io/rewrite-target: /
+spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
+  rules:
+  ## define in the system hosts file
+  - host: maiello-local.k8s.io
+    http:
+      paths:
+      - path: /user
+        backend:
+          serviceName: user
+          servicePort: 8080
+      - path: /campsite
+        backend:
+          serviceName: campsite
+          servicePort: 8080
+      - path: /reservation
+        backend:
+          serviceName: reservation
+          servicePort: 80

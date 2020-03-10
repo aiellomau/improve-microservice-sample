@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zuul
+  labels:
+    app: zuul
+  namespace: improve-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zuul
+  template:
+    metadata:
+      labels:
+        app: zuul
+    spec:
+      containers:
+      - name: zuul
+        image: maiello/improve_zuul:0.0.2-SNAPSHOT
+        ports:
+        - containerPort: 8080
