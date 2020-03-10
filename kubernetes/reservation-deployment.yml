@@ -21,6 +21,16 @@ spec:
         ports:
         - containerPort: 8080
         env:
+        - name: RABBITMQ_SERVICE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: rabbitmq
+              key: rabbitmq-host
+        - name: RABBITMQ_SERVICE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: rabbitmq
+              key: rabbitmq-port
         - name: RABBITMQ_USERNAME
           valueFrom:
             secretKeyRef:

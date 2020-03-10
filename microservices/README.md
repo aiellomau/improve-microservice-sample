@@ -1,6 +1,6 @@
 
 # Reservation Rest API details
-Note: http://localhost:8762 is the API Gateway (Zuul) where acts as a proxy for all microservices
+Note: http://maiello-local.k8s.io is the API Gateway (Zuul) where acts as a proxy for all microservices
 
 ### Get availables dates
 
@@ -8,7 +8,7 @@ Note: http://localhost:8762 is the API Gateway (Zuul) where acts as a proxy for 
 | ------ | ------ |
 | GET | http://host:port/reservation/avail/{arrivalDate}/{departureDate} |
 
-Sample URL: http://localhost:8762/reservation/avail/20190126/20190202
+Sample URL: http://maiello-local.k8s.io/reservation/avail/20190126/20190202
 
 Sample response:
 ```Json
@@ -51,7 +51,7 @@ Sample response:
 | ------ | ------ |
 | POST | http://host:port/reservation/add |
 
-Sample URL: http://localhost:8762/reservation/add
+Sample URL: http://maiello-local.k8s.io/reservation/add
 
 Body request (application/json):
 ```Json
@@ -79,7 +79,7 @@ Sample response:
 | ------ | ------ |
 | PUT | http://host:port/reservation/update |
 
-Sample URL: http://localhost:8762/reservation/update
+Sample URL: http://maiello-local.k8s.io/reservation/update
 
 Body request (application/json):
 ```Json
@@ -106,7 +106,7 @@ Sample response:
 | ------ | ------ |
 | DELETE | http://host:port/reservation/cancel/{reservationId} |
 
-Sample URL: http://localhost:8762/reservation/cancel/1
+Sample URL: http://maiello-local.k8s.io/reservation/cancel/1
 
 Sample response:
 ```Json
