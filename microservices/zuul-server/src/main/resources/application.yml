@@ -1,12 +1,15 @@
-server:
-  port: 8762
+#server:
+#  port: 8762
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+#  instance:
+#    preferIpAddress: true
+#    leaseRenewalIntervalInSeconds: 5
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
-    leaseRenewalIntervalInSeconds: 5
+    enabled: false
 management:
   security:
     enabled: false
@@ -34,7 +37,7 @@ spring:
     name: ^project.artifactId^
     version: ^project.version^
     title: ^project.name^
-  boot.admin.client:
-    url: http://localhost:8763
-    username: admin
-    password: password
+#  boot.admin.client:
+#    url: http://localhost:8763
+#    username: admin
+#    password: password

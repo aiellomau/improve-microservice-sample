@@ -7,10 +7,10 @@
 	<parent>
 		<groupId>com.improve</groupId>
 		<artifactId>reservations</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>zuul-server</artifactId>
+	<artifactId>zuul</artifactId>
 
 	<dependencies>
 
